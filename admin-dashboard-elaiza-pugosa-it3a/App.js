@@ -29,31 +29,31 @@ const router = createBrowserRouter([
       //   element: <Dashboard />,
       // },
       {
-        path: 'movies', // Corrected to 'movies' as it's a child of /main
+        path: 'movies', 
         element: <Movie />,
         children: [
           {
-            path: '', // Default route for /main/movies will load the Lists component
+            path: '', 
             element: <Lists />,
           },
           {
-            path: 'form/:movieId?', // Dynamically capture movieId, optional
+            path: 'form/:movieId?', 
             element: <Form />,
             children: [
               {
-                path: '', // Default route for movie form
+                path: '', 
                 element: <h1>Change this for cast & crew CRUD functionality.</h1>,
               },
               {
-                path: 'cast-and-crews', // Nested route for cast and crew management
+                path: 'cast-and-crews', 
                 element: <h1>Change this for cast & crew CRUD functionality component.</h1>,
               },
               {
-                path: 'photos', // Nested route for photos management
+                path: 'photos', 
                 element: <h1>Change this for photos CRUD functionality component.</h1>,
               },
               {
-                path: 'videos', // Nested route for videos management
+                path: 'videos', 
                 element: <h1>Change this for videos CRUD functionality component.</h1>,
               },
             ],
