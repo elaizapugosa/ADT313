@@ -28,7 +28,6 @@ function Login() {
     switch (type) {
       case 'email':
         setEmail(event.target.value);
-
         break;
 
       case 'password':
@@ -52,7 +51,7 @@ function Login() {
     })
       .then((res) => {
         console.log(res);
-        //store response access token to localstorage
+        // Store response access token to localstorage
         localStorage.setItem('accessToken', res.data.access_token);
         navigate('/main/movies');
         setStatus('idle');
@@ -61,7 +60,6 @@ function Login() {
         setError(e.response.data.message);
         console.log(e);
         setStatus('idle');
-        // alert(e.response.data.message);
       });
   };
 
@@ -134,10 +132,16 @@ function Login() {
                 {status === 'idle' ? 'Login' : 'Loading'}
               </button>
             </div>
+
+            {}
             <div className='register-container'>
-              <a href='/register'>
+              <button
+                type='button'
+                className='register-button'
+                onClick={() => navigate('/register')}
+              >
                 <small>Register</small>
-              </a>
+              </button>
             </div>
           </div>
         </form>
