@@ -52,7 +52,7 @@ const Form = () => {
   };
 
   const handleSave = () => {
-    setError(''); // Clear any previous errors
+    setError(''); 
     const accessToken = localStorage.getItem('accessToken');
     if (!title || !overview) {
       alert('Please fill in the required fields.');
@@ -96,7 +96,7 @@ const Form = () => {
   };
 
   const handleDelete = () => {
-    setError(''); // Clear any previous errors
+    setError(''); 
     if (!movieId) {
       setError('Movie ID is not available for deletion.');
       return;
@@ -131,6 +131,7 @@ const Form = () => {
           setReleaseDate(response.data.releaseDate);
           setVoteAverage(response.data.voteAverage);
           setPosterPath(response.data.posterPath);
+
         })
         .catch((error) => {
           console.error(error);
@@ -151,31 +152,35 @@ const Form = () => {
     }
   };
 
+  useEffect(()=>{
+    console.log(selectedMovie)
+  })
+
   return (
     <>
       <h1>{movieId !== undefined ? 'Edit ' : 'Create '} Movie</h1>
       {error && <p className="error-message">{error}</p>} {/* Display error message */}
       {movieId === undefined && (
         <>
-          <div className='search-container'>
+          <div className="search-container">
             Search Movie:{' '}
             <input
-              type='text'
+              type="text"
               onChange={(event) => setQuery(event.target.value)}
             />
-            <button type='button' onClick={() => handleSearch(1)}>
+            <button type="button" onClick={() => handleSearch(1)}>
               Search
             </button>
-            <div className='searched-movie'>
+            <div className="searched-movie">
               {searchedMovieList.map((movie) => (
-                <p key={movie.id} onClick={() => handleSelectMovie(movie)}>
+                <p key={movie.id} onClick={() => {handleSelectMovie(movie);}}>
                   {movie.original_title}
                 </p>
               ))}
             </div>
-            <div className='pagination'>
+            <div className="pagination">
               <button
-                type='button'
+                type="button"
                 onClick={handlePreviousPage}
                 disabled={currentPage === 1}
               >
@@ -185,7 +190,7 @@ const Form = () => {
                 Page {currentPage} of {totalPages}
               </span>
               <button
-                type='button'
+                type="button"
                 onClick={handleNextPage}
                 disabled={currentPage === totalPages}
               >
@@ -196,63 +201,63 @@ const Form = () => {
           <hr />
         </>
       )}
-      <div className='container'>
+      <div className="container">
         <form>
-          {posterPath && (
-            <img
-              className='poster-image'
-              src={posterPath}
-              alt={title}
-            />
-          )}
-          <div className='field'>
-            Title:
-            <input
-              type='text'
-              value={title}
-              onChange={(event) => setTitle(event.target.value)}
-            />
+          <div className="movie-info">
+            {posterPath && (
+              <img className="poster-image" src={posterPath} alt={title} />
+            )}
+            <div className="movie-details">
+              <div className="field">
+                <label>Title:</label>
+                <input
+                  type="text"
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
+                />
+              </div>
+              <div className="field">
+                <label>Overview:</label>
+                <textarea
+                  rows={10}
+                  value={overview}
+                  onChange={(event) => setOverview(event.target.value)}
+                />
+              </div>
+              <div className="field">
+                <label>Popularity:</label>
+                <input
+                  type="text"
+                  value={popularity}
+                  onChange={(event) => setPopularity(event.target.value)}
+                />
+              </div>
+              <div className="field">
+                <label>Release Date:</label>
+                <input
+                  type="text"
+                  value={releaseDate}
+                  onChange={(event) => setReleaseDate(event.target.value)}
+                />
+              </div>
+              <div className="field">
+                <label>Vote Average:</label>
+                <input
+                  type="text"
+                  value={voteAverage}
+                  onChange={(event) => setVoteAverage(event.target.value)}
+                />
+              </div>
+              <button type="button" onClick={handleSave}>
+                Save
+              </button>
+              {movieId && (
+                <button type="button" onClick={handleDelete} className="delete-button">
+                  Delete
+                </button>
+              )}
+            </div>
           </div>
-          <div className='field'>
-            Overview:
-            <textarea
-              rows={10}
-              value={overview}
-              onChange={(event) => setOverview(event.target.value)}
-            />
-          </div>
-          <div className='field'>
-            Popularity:
-            <input
-              type='text'
-              value={popularity}
-              onChange={(event) => setPopularity(event.target.value)}
-            />
-          </div>
-          <div className='field'>
-            Release Date:
-            <input
-              type='text'
-              value={releaseDate}
-              onChange={(event) => setReleaseDate(event.target.value)}
-            />
-          </div>
-          <div className='field'>
-            Vote Average:
-            <input
-              type='text'
-              value={voteAverage}
-              onChange={(event) => setVoteAverage(event.target.value)}
-            />
-          </div>
-          <button type='button' onClick={handleSave}>
-            Save
-          </button>
-          {movieId && (
-            <button type='button' onClick={handleDelete} className="delete-button">
-              Delete
-            </button>
-          )}
         </form>
       </div>
   
@@ -260,24 +265,24 @@ const Form = () => {
       <div>
         <hr />
         <nav>
-          <ul className='tabs'>
+          <ul className="tabs">
             <li
               onClick={() => {
-                navigate(`/main/movies/form/${movieId}/cast-and-crews`);
+                navigate(`/main/movies/form/${movieId}/cast-and-crews/${movie.tmdbId}`);
               }}
             >
               Cast & Crews
             </li>
             <li
               onClick={() => {
-                navigate(`/main/movies/form/${movieId}/videos`);
+                navigate(`/main/movies/form/${movieId}/videos/${movie.tmdbId}`);
               }}
             >
               Videos
             </li>
             <li
               onClick={() => {
-                navigate(`/main/movies/form/${movieId}/photos`);
+                navigate(`/main/movies/form/${movieId}/photos/${movie.tmdbId}`);
               }}
             >
               Photos
@@ -288,6 +293,7 @@ const Form = () => {
       </div>
     </>
   );
+  
   
   
 };
