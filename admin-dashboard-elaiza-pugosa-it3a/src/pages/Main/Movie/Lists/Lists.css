@@ -1,17 +1,101 @@
 .lists-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  .create-container {
-    align-self: flex-end;
-    margin: 1rem 0;
-  }
-  .table-container,
-  .movie-lists {
-    width: 100%;
-  }
-  
-  .table-container {
-    text-align: center;
-  }
+  width: 100%;
+  padding: 1.5rem;
+  background-color: #1a1a1a;
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.create-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.create-container button {
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: green;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.create-container button:hover {
+  background-color: #00cc00;
+  box-shadow: 0 0 8px #00ff00;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  background-color: #121212;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.movie-lists {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.movie-lists th,
+.movie-lists td {
+  padding: 0.5rem; /* Reduced padding for smaller rows */
+  text-align: center;
+  color: white;
+  font-size: 0.9rem; /* Slightly smaller font size for compactness */
+}
+
+.movie-lists th {
+  background-color: #333;
+  font-size: 1rem;
+}
+
+.movie-lists tr {
+  height: auto; /* Allow rows to adjust naturally based on content */
+}
+
+.movie-lists tr:nth-child(even) {
+  background-color: #1f1f1f;
+}
+
+.movie-lists tr:hover {
+  background-color: #2c2c2c;
+}
+
+.movie-lists button {
+  padding: 2% 1%; /* Reduced padding for buttons */
+  width: 60%;
+  margin-bottom: 0%;
+  margin-top: 2%;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.movie-lists button:first-child {
+  background-color: green;
+  color: white;
+}
+
+.movie-lists button:first-child:hover {
+  background-color: #00cc00;
+  box-shadow: 0 0 12px #00ff00;
+}
+
+.movie-lists button:last-child {
+  background-color: darkred;
+  color: white;
+}
+
+.movie-lists button:last-child:hover {
+  background-color: #cc0000;
+  box-shadow: 0 0 12px #ff0000;
+}
