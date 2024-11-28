@@ -53,6 +53,7 @@ function Login() {
         console.log(res);
         // Store response access token to localstorage
         localStorage.setItem('accessToken', res.data.access_token);
+        localStorage.setItem('user' , JSON.stringify(res.data.user));
         navigate('/main/movies');
         setStatus('idle');
       })
@@ -68,77 +69,74 @@ function Login() {
   }, [userInputDebounce]);
 
   return (
-    <div className='Login'>
-      <div className='main-container'>
+    <div className="Login">
+      <div className="main-container">
         <form>
-          <div className='form-container'>
+          <div className="login-form-container">
             <h3>Login</h3>
-
-            {error && <span className='login errors'>{error}</span>}
+  
+            {error && <span className="login errors">{error}</span>}
             <div>
-              <div className='form-group'>
+              <div className="form-group">
                 <label>E-mail:</label>
                 <input
-                  type='text'
-                  name='email'
+                  type="text"
+                  name="email"
                   ref={emailRef}
-                  onChange={(e) => handleOnChange(e, 'email')}
+                  onChange={(e) => handleOnChange(e, "email")}
                 />
               </div>
-              {debounceState && isFieldsDirty && email == '' && (
-                <span className='errors'>This field is required</span>
+              {debounceState && isFieldsDirty && email === "" && (
+                <span className="errors">This field is required</span>
               )}
             </div>
             <div>
-              <div className='form-group'>
+              <div className="form-group password-field">
                 <label>Password:</label>
                 <input
-                  type={isShowPassword ? 'text' : 'password'}
-                  name='password'
+                  type={isShowPassword ? "text" : "password"}
+                  name="password"
                   ref={passwordRef}
-                  onChange={(e) => handleOnChange(e, 'password')}
+                  onChange={(e) => handleOnChange(e, "password")}
                 />
+                
               </div>
-              {debounceState && isFieldsDirty && password == '' && (
-                <span className='errors'>This field is required</span>
+              {debounceState && isFieldsDirty && password === "" && (
+                <span className="errors">This field is required</span>
               )}
             </div>
-            <div className='show-password' onClick={handleShowPassword}>
-              {isShowPassword ? 'Hide' : 'Show'} Password
-            </div>
-
-            <div className='submit-container'>
+  
+            <div className="submit-container">
               <button
-                type='button'
-                disabled={status === 'loading'}
+                type="button"
+                disabled={status === "loading"}
                 onClick={() => {
-                  if (status === 'loading') {
+                  if (status === "loading") {
                     return;
                   }
                   if (email && password) {
                     handleLogin();
                   } else {
                     setIsFieldsDirty(true);
-                    if (email == '') {
+                    if (email === "") {
                       emailRef.current.focus();
                     }
-
-                    if (password == '') {
+  
+                    if (password === "") {
                       passwordRef.current.focus();
                     }
                   }
                 }}
               >
-                {status === 'idle' ? 'Login' : 'Loading'}
+                {status === "idle" ? "Login" : "Loading"}
               </button>
             </div>
-
-            {}
-            <div className='register-container'>
+  
+            <div className="register-container">
               <button
-                type='button'
-                className='register-button'
-                onClick={() => navigate('/register')}
+                type="button"
+                className="register-button"
+                onClick={() => navigate("/register")}
               >
                 <small>Register</small>
               </button>
@@ -148,6 +146,7 @@ function Login() {
       </div>
     </div>
   );
+  
 }
 
 export default Login;
