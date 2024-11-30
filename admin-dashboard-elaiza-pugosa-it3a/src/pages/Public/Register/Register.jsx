@@ -49,10 +49,10 @@ function Register() {
 
   return (
     <div className='Register'>
-      <div className='main-container'>
+      <div className='register-main-container'>
         <h3>Register</h3>
         <form>
-          <div className='form-container'>
+          <div className='register-form-container'>
             <div className='form-group'>
               <label>Email:</label>
               <input
@@ -110,7 +110,7 @@ function Register() {
               />
             </div>
             {error && <span className='errors'>{error}</span>}
-            <div className='submit-container'>
+            <div className='register-submit-container'>
               <button
                 type='button'
                 disabled={status === 'loading'}

@@ -158,12 +158,14 @@ const Form = () => {
 
   return (
     <>
-      <h1>{movieId !== undefined ? 'Edit ' : 'Create '} Movie</h1>
+      <h1 className="movie-heading">
+      {movieId !== undefined ? 'Edit ' : 'Create '} Movie
+      </h1>
       {error && <p className="error-message">{error}</p>} {/* Display error message */}
       {movieId === undefined && (
         <>
           <div className="search-container">
-            Search Movie:{' '}
+            <h1>Search Movie:{' '}</h1>
             <input
               type="text"
               onChange={(event) => setQuery(event.target.value)}
@@ -178,76 +180,80 @@ const Form = () => {
                 </p>
               ))}
             </div>
-            <div className="pagination">
-              <button
-                type="button"
-                onClick={handlePreviousPage}
-                disabled={currentPage === 1}
-              >
-                Previous
-              </button>
-              <span>
-                Page {currentPage} of {totalPages}
-              </span>
-              <button
-                type="button"
-                onClick={handleNextPage}
-                disabled={currentPage === totalPages}
-              >
-                Next
-              </button>
-            </div>
+          <div className="pagination">
+            <button
+              type="button"
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+            >
+              Previous
+            </button>
+            <span className="pagination-text">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              type="button"
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+
           </div>
           <hr />
         </>
       )}
       <div className="container">
-        <form>
-          <div className="movie-info">
-            {posterPath && (
+      <form>
+        <div className="movie-info">
+          {posterPath && (
+            <div className="poster-container">
               <img className="poster-image" src={posterPath} alt={title} />
-            )}
-            <div className="movie-details">
-              <div className="field">
-                <label>Title:</label>
-                <input
-                  type="text"
-                  value={title}
-                  onChange={(event) => setTitle(event.target.value)}
-                />
-              </div>
-              <div className="field">
-                <label>Overview:</label>
-                <textarea
-                  rows={10}
-                  value={overview}
-                  onChange={(event) => setOverview(event.target.value)}
-                />
-              </div>
-              <div className="field">
-                <label>Popularity:</label>
-                <input
-                  type="text"
-                  value={popularity}
-                  onChange={(event) => setPopularity(event.target.value)}
-                />
-              </div>
-              <div className="field">
-                <label>Release Date:</label>
-                <input
-                  type="text"
-                  value={releaseDate}
-                  onChange={(event) => setReleaseDate(event.target.value)}
-                />
-              </div>
-              <div className="field">
-                <label>Vote Average:</label>
-                <input
-                  type="text"
-                  value={voteAverage}
-                  onChange={(event) => setVoteAverage(event.target.value)}
-                />
-              </div>
+            </div>
+          )}
+          <div className="movie-details">
+            <div className="field">
+              <label>Title:</label>
+              <input
+                type="text"
+                value={title}
+                onChange={(event) => setTitle(event.target.value)}
+              />
+            </div>
+            <div className="field">
+              <label>Overview:</label>
+              <textarea
+                rows={10}
+                value={overview}
+                onChange={(event) => setOverview(event.target.value)}
+              />
+            </div>
+            <div className="field">
+              <label>Popularity:</label>
+              <input
+                type="text"
+                value={popularity}
+                onChange={(event) => setPopularity(event.target.value)}
+              />
+            </div>
+            <div className="field">
+              <label>Release Date:</label>
+              <input
+                type="text"
+                value={releaseDate}
+                onChange={(event) => setReleaseDate(event.target.value)}
+              />
+            </div>
+            <div className="field">
+              <label>Vote Average:</label>
+              <input
+                type="text"
+                value={voteAverage}
+                onChange={(event) => setVoteAverage(event.target.value)}
+              />
+            </div>
+            <div className="button-container">
               <button type="button" onClick={handleSave}>
                 Save
               </button>
@@ -258,8 +264,10 @@ const Form = () => {
               )}
             </div>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
+    </div>
+
   
       {/* Navigation for Sub-Routes */}
       <div>

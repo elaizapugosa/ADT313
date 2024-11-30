@@ -23,6 +23,7 @@ function Main() {
     <div className='Main'>
       <div className='container'>
         <div className='navigation'>
+        <h1>Admin</h1>
           <ul>
             {/* <li>
               <a href='/main/dashboard'>Dashboard</a>

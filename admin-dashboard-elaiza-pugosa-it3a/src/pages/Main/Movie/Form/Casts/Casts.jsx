@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import './Casts.css';
+
 
 function Casts() {
 
@@ -104,7 +106,7 @@ const handleSave = async (event) => {
             <div>
               <form>
                 <label>
-                  Cast Profile
+                  Cast Profile URL
                   <input type="text" name="url" value={data.url} onChange={handleOnChange} />
                 </label>
                 <label>
@@ -112,7 +114,7 @@ const handleSave = async (event) => {
                   <input type="text" name="name" value={data.name} onChange={handleOnChange} />
                 </label>
                 <label>
-                  Cast Character Name
+                  Character Name
                   <input type="text" name="characterName" value={data.characterName} onChange={handleOnChange} />
                 </label>
                 <label>
@@ -142,22 +144,50 @@ const handleSave = async (event) => {
     
       const [state, setState] = useState("base");
 
-  return (
-    <div>
-        <button onClick={()=> state == "base" ? setState("add") : setState("base")}>Add Cast</button>
+      return (
+        <div className="casts-page">
+          <button
+            onClick={() => state === "base" ? setState("add") : setState("base")}
+            className="toggle-form-button"
+          >
+            {state === "base" ? "Add Cast" : "Back to List"}
+          </button>
+      
+          {renderForm()}
+      
+          <div className="cast-list">
+            {castInformation.map((cast) => (
+              cast.movieId === parseInt(tmdbId) && (
+                <div className="cast-item" key={cast.id}>
+                  <div className="cast-header">
+                    <img src={cast.url} alt={cast.name} className="cast-image" />
+                    <div className="cast-info">
+                      <h2>{cast.name}</h2>
+                      <h4>{cast.characterName}</h4>
+                    </div>
+                  </div>
+                  <div className="cast-actions">
+                  <button 
+                    onClick={() => { setSelectedCast(cast); setState("update"); }} 
+                    className="edit-button"
+                  >
+                    <i className="fas fa-edit"></i> {/* FontAwesome edit icon */}
+                  </button>
 
-        {renderForm()}
-
-          {castInformation.map((cast) => (
-            cast.movieId === parseInt(tmdbId) && (
-            <div>
-            <img src ={cast.url}/>
-            <h1>{cast.name}</h1>
-            <h3>{cast.characterName}</h3>
-            <button onClick={()=> {setSelectedCast(cast); setState("update")}}>Edit</button>
-            <button onClick={()=> handleDelete(cast.id)}>Delete</button>
-            </div> )
+                  <button 
+                    onClick={() => handleDelete(cast.id)} 
+                    className="cast-delete-button"
+                  >
+                    <i className="fas fa-trash"></i> {/* FontAwesome trash icon */}
+                  </button>
+                  </div>
+                </div>
+              )
             ))}
+          </div>
+        </div>
+      );
+      
 
 
             {/* <form>
@@ -192,8 +222,7 @@ const handleSave = async (event) => {
                 <input type="text"  name='description' value={data.description} onChange={handleOnChange}/>
             </form>
             <button onClick={handleSave}>Save</button> */}
-    </div>
-  )
+
 }
 
 export default Casts

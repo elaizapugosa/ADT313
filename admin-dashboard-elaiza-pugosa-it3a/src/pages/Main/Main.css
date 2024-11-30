@@ -9,11 +9,11 @@
 }
 .Main .container .outlet {
   flex-grow: 3;
-  padding: 1rem;
+  padding: 0.1.2rem;
   overflow-y: auto;
 }
 .Main .container .navigation {
-  background-color: aliceblue;
+  background-color: #D9D9D9;
   padding-top: 40px;
   height: 100vh;
 }
@@ -25,11 +25,11 @@
 }
 
 .Main .container .navigation ul li {
-  padding: 10px 80px 10px 20px;
+  padding: 20px 100px 20px 20px;
 }
 .Main .container .navigation ul li.active,
 .Main .container .navigation ul li:hover {
-  background: #ccc;
+  background: whitesmoke;
 }
 .Main .container .navigation ul li a {
   text-decoration: none;
@@ -37,4 +37,30 @@
 
 .Main .container .navigation ul li.logout {
   cursor: pointer;
+}
+
+.Main .container .navigation h1 {
+  color: black; 
+  padding-left: 40px; 
+  margin-bottom: 10%;
+  font-weight: bold;
+}
+
+.Main .container .navigation ul li a {
+  text-decoration: none;
+  color: darkblue; 
+  font-weight: bold; 
+}
+
+.Main .container .navigation ul li.logout a {
+  color: red;
+  font-weight: bold; 
+}
+
+.Main .container .navigation ul li a:hover {
+  color: black; 
+}
+
+.Main .container .navigation ul li.active a {
+  color: black; 
 }

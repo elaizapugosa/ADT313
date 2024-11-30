@@ -1,11 +1,19 @@
 .lists-container {
+  font-size: 60%;
   width: 100%;
   padding: 1.5rem;
-  background-color: #1a1a1a;
+  background-image: url('/dark bg.png');
+  background-repeat: no-repeat;
   color: white;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
+
+.lists-container h1 {
+  color: white;
+  font-size: 2rem; /* Optional: Adjust font size */
+}
+
 
 .create-container {
   display: flex;
@@ -17,21 +25,22 @@
   border: none;
   border-radius: 5px;
   font-size: 1rem;
-  background-color: green;
+  background-color: #2e5266FF;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .create-container button:hover {
-  background-color: #00cc00;
-  box-shadow: 0 0 8px #00ff00;
+  background-color: rgb(30, 109, 151);
+  box-shadow: 0 0 8px #2e5266FF;
 }
 
 .table-container {
   width: 100%;
   overflow-x: auto;
   border-radius: 8px;
+  border: 1px solid gray;
   background-color: #121212;
   padding: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -81,21 +90,21 @@
 }
 
 .movie-lists button:first-child {
-  background-color: green;
+  background-color: #2e5266FF;
   color: white;
 }
 
 .movie-lists button:first-child:hover {
-  background-color: #00cc00;
-  box-shadow: 0 0 12px #00ff00;
+  background-color: rgb(30, 109, 151);
+  box-shadow: 0 0 12px #2e5266FF;
 }
 
 .movie-lists button:last-child {
-  background-color: darkred;
+  background-color: #660000;
   color: white;
 }
 
 .movie-lists button:last-child:hover {
-  background-color: #cc0000;
-  box-shadow: 0 0 12px #ff0000;
+  background-color: #b30505;
+  box-shadow: 0 0 12px #b30505;
 }

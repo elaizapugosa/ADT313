@@ -70,7 +70,7 @@ function Login() {
 
   return (
     <div className="Login">
-      <div className="main-container">
+      <div className="login-main-container">
         <form>
           <div className="login-form-container">
             <h3>Login</h3>
@@ -106,7 +106,7 @@ function Login() {
               )}
             </div>
   
-            <div className="submit-container">
+            <div className="login-submit-container">
               <button
                 type="button"
                 disabled={status === "loading"}
@@ -132,10 +132,10 @@ function Login() {
               </button>
             </div>
   
-            <div className="register-container">
+            <div className="registration-container">
               <button
                 type="button"
-                className="register-button"
+                className="registration-submit"
                 onClick={() => navigate("/register")}
               >
                 <small>Register</small>
