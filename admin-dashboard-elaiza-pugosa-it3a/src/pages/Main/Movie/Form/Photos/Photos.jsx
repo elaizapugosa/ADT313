@@ -164,7 +164,7 @@ function Photos() {
                   </button>
                   <button
                     onClick={() => handleDelete(photo.id)}
-                    className="photo-delete-button"
+                    className="photo-deleted-button"
                   >
                     <i className="fas fa-trash"></i>
                   </button>

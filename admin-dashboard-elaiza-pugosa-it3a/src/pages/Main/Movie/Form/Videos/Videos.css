@@ -185,7 +185,7 @@ input:focus {
 }
 
 /* Delete button styling */
-.video-delete-button {
+.video-deleted-button {
     background-color: transparent; /* No background */
     color: red; /* Icon color */
     border: none;
@@ -195,7 +195,7 @@ input:focus {
     width: auto; /* Make the button take only the space it needs */
   }
 
-.video-delete-button:hover {
+.video-deleted-button:hover {
     color: #c82333; /* Change color on hover */
 }
 

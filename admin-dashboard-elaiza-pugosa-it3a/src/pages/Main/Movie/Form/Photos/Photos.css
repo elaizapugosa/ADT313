@@ -1,4 +1,3 @@
-/* General page styling */
 .photos-page {
     font-family: Arial, sans-serif;
     background-color: #1E1E1E;
@@ -7,7 +6,6 @@
     margin: 0 auto;
 }
 
-/* Button for toggling form */
 .toggle-form-button {
     background-color: #2e5266FF;
     color: whitesmoke;
@@ -96,7 +94,7 @@
 }
 
 /* Delete button styling */
-.photo-delete-button {
+.photo-deleted-button {
     background-color: transparent;
     color: red;
     border: none;
@@ -106,6 +104,6 @@
     width: auto;
 }
 
-.photo-delete-button:hover {
+.photo-deleted-button:hover {
     color: #c82333;
 }

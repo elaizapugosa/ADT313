@@ -157,7 +157,6 @@
     color: #0056b3; /* Change color on hover */
   }
   
-  /* Delete button styling */
   .cast-delete-button {
     background-color: transparent; /* No background */
     color: red; /* Icon color */

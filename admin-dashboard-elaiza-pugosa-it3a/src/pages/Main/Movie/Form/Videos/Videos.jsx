@@ -204,7 +204,7 @@ function Videos() {
                     >
                       Edit
                     </button>
-                    <button onClick={() => handleDelete(video.id)} className="video-delete-button">
+                    <button onClick={() => handleDelete(video.id)} className="video-deleted-button">
                       Delete
                     </button>
                   </div>
