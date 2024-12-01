@@ -209,11 +209,12 @@ button:hover {
   align-items: center; /* Align items to the top */
   margin-left: 200px;
   gap: 4rem; /* Space between poster and details */
-  width: 1000%;
+  width: 100%;
   max-width: 800px; /* Adjust container width */
   padding: 2rem;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
+
 
 .poster-container {
   flex-shrink: 0; /* Prevents the poster from resizing */

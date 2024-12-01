@@ -85,6 +85,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center; /* Center items in the container */
   }
   
 /* Cast item styling - Vertical Layout */
@@ -96,6 +97,7 @@
     border-radius: 8px;
     box-shadow: 10px 10px 10px rgba(73, 73, 73, 0.5);
     width: 20%; /* Set the width of each card */
+    height: 350px;
     box-sizing: border-box;
     transition: transform 0.3s ease-in-out;
     display: flex;
@@ -104,6 +106,7 @@
     text-align: center; /* Center the text */
     padding-bottom: 50px; /* Padding to avoid buttons overlapping content */
   }
+
   
   .cast-item:hover {
     transform: scale(1.05);
