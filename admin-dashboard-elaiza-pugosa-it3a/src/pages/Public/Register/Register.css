@@ -69,7 +69,7 @@
   }
 
   .register-submit-container button {
-    background-color: #2e5266FF; /* Primary blue color */
+    background-color: #2e5266FF; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -78,12 +78,12 @@
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%; /* Full-width button for responsiveness */
-    max-width: 300px; /* Limit the width of the button */
+    width: 100%; 
+    max-width: 300px; 
   }
 
   .register-submit:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3; 
   }
   
   .register-container {

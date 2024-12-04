@@ -1,0 +1,48 @@
+/* Movie Cards Container */
+.card {
+  width: 180px;
+  height: 300px;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #2c2c2c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hover Effect for Cards */
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+}
+
+/* Image inside the card */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Title text at the bottom of the card */
+.card span {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+  transition: background-color 0.3s ease;
+}
+
+/* Hover Effect on Title Text */
+.card:hover span {
+  background-color: rgba(0, 0, 0, 0.8);
+}

@@ -6,6 +6,7 @@
 .Main .container {
   display: flex;
   width: 100vw;
+  overflow: hidden;
 }
 .Main .container .outlet {
   flex-grow: 3;

@@ -1,4 +1,3 @@
-/* General Layout */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -8,7 +7,6 @@ body {
   align-items: center;
 }
 
-/* Header */
 header {
   width: 100%;
   background-color: #333;
@@ -17,19 +15,19 @@ header {
 }
 
 .movie-heading {
-  color: white; /* Green color */
+  color: white; 
   margin-left: 15px;
   margin-top: 20px;
   font-size: 2rem;
 }
 
-/* Navigation Menu */
 nav {
   width: 100%;
   display: flex;
   justify-content: center;
   background-color: #222;
 }
+
 
 nav ul {
   list-style: none;
@@ -48,7 +46,6 @@ nav li:hover {
   background-color: #2e5266FF;
 }
 
-/* Movie Section */
 .movie-page {
   margin-top: 30px;
   text-align: center;
@@ -63,7 +60,7 @@ nav li:hover {
   margin-top: 20px;
   margin-left: 23px;
   color: white;
-  font-size: 1rem; /* Optional: Adjust font size */
+  font-size: 1rem; 
 }
 
 .search-container input {
@@ -104,7 +101,7 @@ nav li:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem; /* Space between items */
+  gap: 1rem; 
   margin-top: 10px;
 }
 
@@ -119,22 +116,21 @@ nav li:hover {
 }
 
 .pagination button:hover {
-  background-color: rgb(30, 109, 151); /* Darker green */
+  background-color: rgb(30, 109, 151); 
 }
 
 .pagination button:disabled {
-  background-color: #ccc; /* Gray color for disabled buttons */
+  background-color: #ccc; 
   color: #121212;
   cursor: not-allowed;
 }
 
 .pagination-text {
-  color: white; /* Set font color to white */
-  font-size: 1rem; /* Adjust font size if needed */
+  color: white; 
+  font-size: 1rem;
 }
 
 
-/* Input Fields */
 .form-container .field input,
 .form-container .field textarea {
   width: 100%;
@@ -146,7 +142,6 @@ nav li:hover {
   margin-bottom: 15px;
 }
 
-/* Buttons */
 button {
   padding: 5px 10px;
   width: 40%;
@@ -160,18 +155,17 @@ button {
 }
 
 button:hover {
-  background-color: #00cc00; /* Darker green */
+  background-color: #00cc00; 
 }
 
 .delete-button {
-  background-color: #FF0000; /* Red for delete */
+  background-color: #FF0000;
 }
 
 .delete-button:hover {
-  background-color: #cc0000; /* Darker red */
+  background-color: #cc0000; 
 }
 
-/* Poster Image */
 .poster-image {
   width: 100%;
   max-width: 300px;
@@ -180,7 +174,6 @@ button:hover {
   margin-bottom: 20px;
 }
 
-/* Form Field */
 .form-container .field {
   display: flex;
   flex-direction: column;
@@ -196,7 +189,6 @@ button:hover {
   font-size: 1rem;
 }
 
-/* Adjusting form section to match the image (e.g. casting, crew, etc.) */
 .form-container .field img {
   max-width: 300px;
   margin-bottom: 20px;
@@ -226,7 +218,7 @@ button:hover {
 }
 
 .movie-details {
-  flex-grow: 1; /* Allows the details section to expand */
+  flex-grow: 1; 
   display: flex;
   flex-direction: column;
   gap: 1.5rem;

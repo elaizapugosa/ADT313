@@ -6,7 +6,7 @@
     margin: 0 auto;
 }
 
-.toggle-form-button {
+.toggle-form-button, .import-toggle-photos-button {
     background-color: #2e5266FF;
     color: whitesmoke;
     padding: 5px 5px;
@@ -21,34 +21,47 @@
     height: 100%;
 }
 
+.import-toggle-photos-button {
+    background-color: #2e5266FF;
+    color: whitesmoke;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    width: 150px;
+    height: 29px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+
 .toggle-form-button:hover {
     background-color: #0056b3;
 }
 
-/* Photo list styling */
 .photo-list {
     margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: center; /* Center items in the container */
+    justify-content: center; 
 }
 
-/* Photo item styling - Similar to cast item */
 .photo-item {
     position: relative;
     background-color: #d9d9d9;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 10px 10px 10px rgba(73, 73, 73, 0.5);
-    width: 20%; /* Set the width of each card to match cast item */
+    width: 20%; 
     box-sizing: border-box;
     transition: transform 0.3s ease-in-out;
     display: flex;
-    flex-direction: column; /* Stack content vertically */
-    align-items: center; /* Center all content */
-    text-align: center; /* Center the text */
-    padding-bottom: 40px; /* Padding to avoid buttons overlapping content */
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+    padding-bottom: 40px; 
 }
 
 .photo-item:hover {
@@ -58,27 +71,24 @@
 .photo-thumbnail {
     width: 200px;
     height: 220px;
-    object-fit: cover; /* Make sure the image covers the box without stretching */
-    margin-bottom: 5px; /* Space below the image */
-    border-radius: 10px; /* Remove roundness */
+    object-fit: cover; 
+    margin-bottom: 5px; 
+    border-radius: 10px; 
 }
 
-/* Styling for photo info (title, description, etc.) */
 .photo-info h4 {
     margin: 10px 0;
     font-size: 14px;
     color: #333;
 }
 
-/* Buttons for actions - edit and delete */
 .photo-actions {
-    position: absolute; /* Absolute positioning for the buttons */
-    bottom: 5px; /* Space from the bottom of the container */
-    right: 10px; /* Space from the right of the container */
+    position: absolute; 
+    bottom: 5px; 
+    right: 10px; 
     display: flex;
 }
 
-/* Edit button styling */
 .photo-edit-button {
     background-color: transparent;
     color: #2e5266FF;
@@ -93,7 +103,6 @@
     color: #0056b3;
 }
 
-/* Delete button styling */
 .photo-deleted-button {
     background-color: transparent;
     color: red;
@@ -107,3 +116,66 @@
 .photo-deleted-button:hover {
     color: #c82333;
 }
+
+.tmdb-photo-list {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; 
+}
+
+.tmdb-photo-item {
+    position: relative;
+    background-color: #d9d9d9;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 10px 10px 10px rgba(73, 73, 73, 0.5);
+    width: 20%; 
+    box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.tmdb-photo-item:hover {
+    transform: scale(1.05);
+}
+
+.tmdb-photo-item img {
+    width: 200px;
+    height: 220px;
+    object-fit: cover; 
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+
+.tmdb-photo-item button {
+    font-family: Arial, sans-serif;
+    padding: 8px 10px;
+    background-color: #2e5266FF;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    width: 100px; 
+    transition: background-color 0.3s ease;
+    margin-top: 10px; 
+}
+
+.tmdb-photo-item button:hover {
+    background-color: #0056b3;
+}
+
+.photo-button-container {
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+    align-items: center; 
+    margin-bottom: 20px; 
+}
+

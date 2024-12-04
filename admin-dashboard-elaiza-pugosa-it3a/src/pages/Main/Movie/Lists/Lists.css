@@ -7,11 +7,13 @@
   color: white;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  overflow-x: hidden;
+  object-fit: cover;
 }
 
 .lists-container h1 {
   color: white;
-  font-size: 2rem; /* Optional: Adjust font size */
+  font-size: 2rem; 
 }
 
 
@@ -54,10 +56,10 @@
 
 .movie-lists th,
 .movie-lists td {
-  padding: 0.5rem; /* Reduced padding for smaller rows */
+  padding: 0.5rem; 
   text-align: center;
   color: white;
-  font-size: 0.9rem; /* Slightly smaller font size for compactness */
+  font-size: 0.9rem; 
 }
 
 .movie-lists th {
@@ -66,7 +68,7 @@
 }
 
 .movie-lists tr {
-  height: auto; /* Allow rows to adjust naturally based on content */
+  height: auto; 
 }
 
 .movie-lists tr:nth-child(even) {
@@ -78,7 +80,7 @@
 }
 
 .movie-lists button {
-  padding: 2% 1%; /* Reduced padding for buttons */
+  padding: 2% 1%; 
   width: 60%;
   margin-bottom: 0%;
   margin-top: 2%;

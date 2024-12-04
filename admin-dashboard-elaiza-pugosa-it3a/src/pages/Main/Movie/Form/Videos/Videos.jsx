@@ -11,6 +11,9 @@ function Videos() {
   const [data, setData] = useState({});
   const [selectedVideo, setSelectedVideo] = useState({});
   const [state, setState] = useState('base');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [tmdbVideos, setTmdbVideos] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -85,7 +88,7 @@ function Videos() {
       },
     }).then(() => {
       setState('base');
-      setSelectedVideo({}); // Clear selected video after update
+      setSelectedVideo({}); 
     });
   };
 
@@ -111,9 +114,9 @@ function Videos() {
       { name: 'site', label: 'Site' },
       { name: 'videoKey', label: 'Video Key' },
       { name: 'videoType', label: 'Video Type' },
-      { name: 'official', label: 'Official', type: 'radio' },  // Change to 'radio' type
+      { name: 'official', label: 'Official', type: 'radio' },
     ];
-  
+
     return (
       <div>
         <form className="video-form-container">
@@ -121,7 +124,6 @@ function Videos() {
             <div key={field.name} className="video-form-group">
               <label>{field.label}</label>
               {field.type === 'radio' ? (
-                // Render radio buttons for "Official"
                 <div className="radio-group">
                   <label>
                     <input
@@ -156,20 +158,87 @@ function Videos() {
             </div>
           ))}
         </form>
-        <button onClick={state === 'add' ? handleSave : handleUpdate} className="video-form-button">
+        <button onClick={state === 'add' ? handleSave : handleUpdate} className="video-form-btn">
           {state === 'add' ? 'Save' : 'Update'}
         </button>
       </div>
     );
   };
-  
-  
+
+  const handleSearch = async () => {
+    if (!searchQuery) return;
+
+    setLoading(true);
+
+    try {
+      const response = await axios.get(`https://api.themoviedb.org/3/search/movie`, {
+        params: {
+          query: searchQuery,
+          api_key: '207de243797c06bb197471a4bebd69d7',
+        },
+      });
+      setTmdbVideos(response.data.results);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching movies:', error);
+      setLoading(false);
+    }
+  };
+
+  const handleImportVideo = (movie) => {
+    const videoData = {
+      name: movie.title,
+      url: `https://www.youtube.com/watch?v=${movie.id}`,
+      site: 'YouTube',
+      videoKey: movie.id,
+      videoType: 'trailer', 
+      official: 'true',
+    };
+
+    setData(videoData); 
+    setState('add'); 
+  };
 
   return (
     <div className="videos-page">
-      <button onClick={() => setState(state === 'base' ? 'add' : 'base')} className="toggle-form-button">
-        {state === 'base' ? 'Add Video' : 'Back to List'}
-      </button>
+      <div className="videos-page">
+      <div className="video-button-container">
+        <button onClick={() => setState(state === 'base' ? 'add' : 'base')} className="toggle-form-button">
+          {state === 'base' ? 'Add Video' : 'Back to List'}
+        </button>
+        <button onClick={() => setState('search')} className="import-videos-button">
+          Import Videos
+        </button>
+      </div>
+    </div>
+
+      {state === 'search' && (
+        <div className="tmdb-search">
+          <label htmlFor="movie-search">Search Movie:</label>
+          <input
+            type="text"
+            placeholder="Search for a movie"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button onClick={handleSearch} disabled={loading} className="video-search-button">
+            {loading ? 'Loading...' : 'Search'}
+          </button>
+
+
+          {tmdbVideos.length > 0 && (
+            <div className="tmdb-video-list">
+              {tmdbVideos.map((movie) => (
+                <div key={movie.id} className="tmdb-video-item">
+                  <h3>{movie.title}</h3>
+                  <button onClick={() => handleImportVideo(movie)} className="import-video-button">Import</button>
+
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
       {state !== 'base' && renderForm()}
       <div className="video-list">
         {Array.isArray(videoInformation) && videoInformation.length > 0 ? (

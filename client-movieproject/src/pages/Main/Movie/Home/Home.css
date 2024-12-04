@@ -1,0 +1,34 @@
+.page-title {
+  font-size: 4.5rem;
+}
+.list-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  gap: 1rem;
+  margin-top: 70px;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+.featured-list-container {
+  width: 100%;
+  margin-bottom: 5rem;
+  aspect-ratio: 22 / 10;
+}
+.featured-backdrop {
+  margin-top: 100px;
+  height: 100%;
+  width: 90%;
+  background-size: cover !important;
+  display: flex;
+  align-items: end;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+.featured-movie-title {
+  font-weight: bold;
+  font-size: 3rem;
+  width: 100%;
+  padding: 2rem;
+}
