@@ -51,7 +51,6 @@ function Login() {
     })
       .then((res) => {
         console.log(res);
-        // Store response access token to localstorage
         localStorage.setItem('accessToken', res.data.access_token);
         localStorage.setItem('user' , JSON.stringify(res.data.user));
         navigate('/main/movies');
@@ -75,7 +74,7 @@ function Login() {
           <div className="login-form-container">
             <h3>Login</h3>
   
-            {error && <span className="login errors">{error}</span>}
+            {error && <span className="login errors">Invalid Email and Password. Please try again!</span>}
             <div>
               <div className="form-group">
                 <label>E-mail:</label>

@@ -58,6 +58,7 @@ function Casts() {
       });
       setCastInformation((prev) => [...prev, response.data]);
       setState("base");
+      alert("Cast successfully added!");
     } catch (error) {
       console.error('Error saving cast:', error);
     }
@@ -83,6 +84,7 @@ function Casts() {
         prev.map((cast) => (cast.id === selectedCast.id ? updatedData : cast))
       );
       setState("base");
+      alert("Cast successfully updated!");
     } catch (error) {
       console.error('Error updating cast:', error);
     }
@@ -98,6 +100,7 @@ function Casts() {
           },
         });
         setCastInformation((prev) => prev.filter((cast) => cast.id !== id));
+        alert('Cast successfully deleted!');
       } catch (error) {
         console.error('Error deleting cast:', error);
       }
@@ -143,7 +146,7 @@ function Casts() {
         },
       });
       setCastInformation((prev) => [...prev, response.data]);
-      console.log(`${cast.name} added successfully.`);
+      alert(`${cast.name} imported successfully.`);
     } catch (error) {
       console.error('Error adding TMDb cast:', error);
     }
@@ -169,6 +172,41 @@ function Casts() {
           </form>
           <button onClick={handleSave} className="save-btn">Save</button>
 
+        </div>
+      );  
+    } else if (state === "update") {
+      return (
+        <div>
+          <form>
+            <label>
+              Cast Profile URL
+              <input
+                type="text"
+                name="url"
+                value={selectedCast.url || ''}
+                onChange={(e) => setSelectedCast({ ...selectedCast, url: e.target.value })}
+              />
+            </label>
+            <label>
+              Cast Name
+              <input
+                type="text"
+                name="name"
+                value={selectedCast.name || ''}
+                onChange={(e) => setSelectedCast({ ...selectedCast, name: e.target.value })}
+              />
+            </label>
+            <label>
+              Character Name
+              <input
+                type="text"
+                name="characterName"
+                value={selectedCast.characterName || ''}
+                onChange={(e) => setSelectedCast({ ...selectedCast, characterName: e.target.value })}
+              />
+            </label>
+          </form>
+          <button onClick={handleUpdate} className="save-btn">Update</button>
         </div>
       );
     } else if (state === "import") {

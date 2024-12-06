@@ -6,11 +6,17 @@ import Home from './pages/Main/Movie/Home/Home';
 import MovieContextProvider from './context/MovieContext';
 import View from './pages/Main/Movie/View/View';
 import Login from './pages/Public/Login/Login';
+import Register from './pages/Public/Register/Register';
+
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Login />,
+  },
+  {
+    path: '/register',
+    element: <Register />, 
   },
   {
     path: '/main',
@@ -21,7 +27,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/main/movies/view/:movieId?',
+        path: '/main/movies/view/:movieId?/:tmdbId?',
         element: <View />,
       },
     ],

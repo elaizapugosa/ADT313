@@ -57,8 +57,59 @@ function Photos() {
       });
       setPhotoInformation((prev) => [...prev, response.data]);
       setState('base');
+      alert("Photo added successfully!");
     } catch (error) {
       console.error('Error saving photo:', error);
+    }
+  };
+
+  const handleEdit = (photo) => {
+    setSelectedPhoto(photo);
+    setData({
+      url: photo.url,
+      description: photo.description,
+    });
+    setState('edit');
+  };
+
+  const handleUpdate = async () => {
+    try {
+      const updatedPhoto = {
+        userId: user.userId,
+        movieId: tmdbId,
+        url: data.url,
+        description: data.description,
+      };
+      const response = await axios.put(`/photos/${selectedPhoto.id}`, updatedPhoto, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      setPhotoInformation((prev) =>
+        prev.map((photo) => (photo.id === selectedPhoto.id ? response.data : photo))
+      );
+      setState('base');
+      alert("Photo updated successfully!");
+    } catch (error) {
+      console.error('Error updating photo:', error);
+    }
+  };
+
+  const handleDelete = async (photoId) => {
+    const isConfirmed = window.confirm('Are you sure you want to delete this photo?');
+    if (isConfirmed) {
+      try {
+        await axios.delete(`/photos/${photoId}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        setPhotoInformation((prev) => prev.filter((photo) => photo.id !== photoId));
+        alert("Photo deleted successfully!");
+      } catch (error) {
+        console.error('Error deleting photo:', error);
+      }
     }
   };
 
@@ -100,7 +151,7 @@ function Photos() {
         },
       });
       setPhotoInformation((prev) => [...prev, response.data]);
-      console.log('Photo added successfully.');
+      alert('Photo imported successfully.');
     } catch (error) {
       console.error('Error adding TMDB photo:', error);
     }
@@ -122,6 +173,24 @@ function Photos() {
           </form>
           <button onClick={handleSave} className="save-btn">
             Save
+          </button>
+        </div>
+      );
+    } else if (state === 'edit') {
+      return (
+        <div>
+          <form>
+            <label>
+              Photo URL
+              <input type="text" name="url" value={data.url || ''} onChange={handleOnChange} />
+            </label>
+            <label>
+              Caption
+              <input type="text" name="description" value={data.description || ''} onChange={handleOnChange} />
+            </label>
+          </form>
+          <button onClick={handleUpdate} className="save-btn">
+            Update
           </button>
         </div>
       );
@@ -181,6 +250,15 @@ function Photos() {
               <div className="photo-item" key={photo.id}>
                 <img src={photo.url} alt={photo.description} className="photo-thumbnail" />
                 <h4>{photo.description}</h4>
+
+                <div className="photos-actions">
+                <button onClick={() => handleEdit(photo)} className="edit-btn">
+                <i className="fas fa-edit"></i>
+                </button>
+                <button onClick={() => handleDelete(photo.id)} className="delete-btn">
+                <i className="fas fa-trash"></i>
+                </button>
+                </div>
               </div>
             )
         )}

@@ -64,13 +64,18 @@ function Videos() {
       })
       .then((response) => {
         console.log(response.data);
-        setState('base'); // Return to base state
+        alert("Video successfully added!");
+        setState('base'); 
       });
   };
 
   const handleUpdate = async () => {
+    if (!selectedVideo.id) {
+      alert("Unable to update. No valid video ID found.");
+      return;
+    }
+  
     const updateData = {
-      id: selectedVideo.id,
       userId: selectedVideo.userId,
       movieId: tmdbId,
       name: selectedVideo.name,
@@ -78,19 +83,28 @@ function Videos() {
       site: selectedVideo.site,
       videoKey: selectedVideo.videoKey,
       videoType: selectedVideo.videoType,
-      official: selectedVideo.official,
+      official: selectedVideo.official === "true" ? 1 : 0, 
     };
-
-    axios.patch(`/videos/${selectedVideo.id}`, updateData, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }).then(() => {
+  
+    try {
+      const response = await axios.patch(`/videos/${selectedVideo.id}`, updateData, {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      alert("Video successfully updated!");
       setState('base');
-      setSelectedVideo({}); 
-    });
-  };
+      setSelectedVideo({});
+      setVideoInformation((prev) =>
+        prev.map((video) => (video.id === selectedVideo.id ? response.data : video))
+      );
+    } catch (error) {
+      console.error('Error updating video:', error.response?.data || error.message);
+      alert('Failed to update the video. Please try again.');
+    }
+  };  
+  
 
   const handleDelete = (id) => {
     const isConfirmed = window.confirm('Are you sure you want to delete this video?');
@@ -102,6 +116,7 @@ function Videos() {
           },
         })
         .then(() => {
+          alert('Video successfully deleted!');
           console.log('Video Deleted');
         });
     }
@@ -185,19 +200,37 @@ function Videos() {
     }
   };
 
-  const handleImportVideo = (movie) => {
-    const videoData = {
-      name: movie.title,
-      url: `https://www.youtube.com/watch?v=${movie.id}`,
-      site: 'YouTube',
-      videoKey: movie.id,
-      videoType: 'trailer', 
-      official: 'true',
-    };
-
-    setData(videoData); 
-    setState('add'); 
+  const handleImportVideo = async (movie) => {
+    try {
+      const response = await axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/videos`, {
+        params: {
+          api_key: '207de243797c06bb197471a4bebd69d7',  
+        },
+      });
+  
+      const youtubeVideo = response.data.results.find(video => video.site === 'YouTube' && video.type === 'Trailer');
+      
+      if (youtubeVideo) {
+        const videoData = {
+          name: movie.title,
+          url: `https://www.youtube.com/watch?v=${youtubeVideo.key}`,  
+          site: 'YouTube',
+          videoKey: youtubeVideo.key,  
+          videoType: 'trailer', 
+          official: 'true',
+        };
+  
+        setData(videoData); 
+        setState('add');
+        alert(`${movie.title} imported successfully.`);
+      } else {
+        console.log('No YouTube trailer found for this movie.');
+      }
+    } catch (error) {
+      console.error('Error fetching videos from TMDB:', error);
+    }
   };
+  
 
   return (
     <div className="videos-page">

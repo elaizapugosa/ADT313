@@ -16,18 +16,18 @@ const Form = () => {
   const [posterPath, setPosterPath] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [error, setError] = useState(''); // State for error messages
+  const [error, setError] = useState(''); 
   let { movieId } = useParams();
   const navigate = useNavigate();
 
   const handleSearch = useCallback((page = 1) => {
-    setError(''); // Clear any previous errors
+    setError(''); 
     axios({
       method: 'get',
       url: `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${page}`,
       headers: {
         Accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5YTdiNmUyNGJkNWRkNjhiNmE1ZWFjZjgyNWY3NGY5ZCIsIm5iZiI6MTcyOTI5NzI5Ny4wNzMzNTEsInN1YiI6IjY2MzhlZGM0MmZhZjRkMDEzMGM2NzM3NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZIX4EF2yAKl6NwhcmhZucxSQi1rJDZiGG80tDd6_9XI', // Update with your API key
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMDdkZTI0Mzc5N2MwNmJiMTk3NDcxYTRiZWJkNjlkNyIsIm5iZiI6MTcyOTg0ODUwNy4yNzUsInN1YiI6IjY3MWI2NGJiNGJlMTU0NjllNzBkYjBmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.srzswX_B0Cm_XRwU9ZbdYx1Ay2giSl0wMthFcPuEcNI', 
       },
     })
       .then((response) => {
@@ -161,7 +161,7 @@ const Form = () => {
       <h1 className="movie-heading">
       {movieId !== undefined ? 'Edit ' : 'Create '} Movie
       </h1>
-      {error && <p className="error-message">{error}</p>} {/* Display error message */}
+      {error && <p className="error-message">{error}</p>}
       {movieId === undefined && (
         <>
           <div className="search-container">
@@ -269,7 +269,6 @@ const Form = () => {
     </div>
 
   
-      {/* Navigation for Sub-Routes */}
       <div>
         <hr />
         <nav>

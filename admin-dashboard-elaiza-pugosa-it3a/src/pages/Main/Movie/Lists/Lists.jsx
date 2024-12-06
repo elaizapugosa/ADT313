@@ -8,7 +8,6 @@ const Lists = () => {
   const navigate = useNavigate();
   const [lists, setLists] = useState([]);
 
-  // Function to fetch movies from the API or database
   const getMovies = () => {
     axios.get('/movies').then((response) => {
       setLists(response.data);
@@ -19,10 +18,9 @@ const Lists = () => {
     getMovies();
   }, []);
 
-  // Function to update IDs in the database after deletion
   const updateMovieIds = (updatedMovies) => {
     updatedMovies.forEach((movie, index) => {
-      const newId = index + 1; // New ID starts from 1
+      const newId = index + 1; 
       if (movie.id !== newId) {
         axios.put(`/movies/${movie.id}`, { id: newId }, {
           headers: {
@@ -33,33 +31,27 @@ const Lists = () => {
     });
   };
 
-  // Handle delete action
   const handleDelete = async (id) => {
     const isConfirm = window.confirm(
       'Are you sure that you want to delete this data?'
     );
     if (isConfirm) {
       try {
-        // Delete the movie from the database
         await axios.delete(`/movies/${id}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
 
-        // Update the movie list by removing the deleted movie
         const updatedLists = lists.filter((movie) => movie.id !== id);
 
-        // Reassign IDs to remaining movies
         const reorderedLists = updatedLists.map((movie, index) => ({
           ...movie,
           id: index + 1,
         }));
 
-        // Update the database with new IDs
         updateMovieIds(reorderedLists);
 
-        // Update the front-end state
         setLists(reorderedLists);
       } catch (error) {
         console.error('Error deleting movie:', error);
@@ -68,7 +60,6 @@ const Lists = () => {
   };
 
   const handleUpdate = (id) => {
-    // Navigate to the form with the movie ID to edit
     navigate('/main/movies/form/' + id);
   };
 

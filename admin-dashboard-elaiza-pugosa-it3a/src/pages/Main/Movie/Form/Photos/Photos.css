@@ -164,7 +164,7 @@
     cursor: pointer;
     width: 100px; 
     transition: background-color 0.3s ease;
-    margin-top: 10px; 
+    margin-top: 5px; 
 }
 
 .tmdb-photo-item button:hover {
@@ -179,3 +179,73 @@
     margin-bottom: 20px; 
 }
 
+@media (max-width: 1200px) {
+    .photo-item {
+        width: 25%;
+    }
+    .tmdb-photo-item {
+        width: 25%;
+    }
+}
+
+@media (max-width: 992px) {
+    .photo-item {
+        width: 33.33%;
+    }
+    .tmdb-photo-item {
+        width: 33.33%;
+    }
+}
+
+@media (max-width: 768px) {
+    .photo-item {
+        width: 55%;
+    }
+    .tmdb-photo-item {
+        width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .photo-item {
+        width: 100%;
+    }
+    .tmdb-photo-item {
+        width: 100%;
+    }
+}
+
+.photos-actions {
+    position: absolute; 
+    bottom: 5px; 
+    right: 10px; 
+    display: flex;
+  }
+
+  .edit-btn {
+    background-color: transparent; 
+    color: #2e5266FF; 
+    border: none;
+    cursor: pointer;
+    font-size: 15px; 
+    transition: color 0.3s ease;
+    width: auto; 
+  }
+  
+  .edit-btn:hover {
+    color: #0056b3; 
+  }
+
+  .delete-btn {
+    background-color: transparent; 
+    color: red; 
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    width: auto; 
+  }
+  
+  .delete-btn:hover {
+    color: #c82333; 
+  }

@@ -11,7 +11,6 @@ const Home = () => {
   const { movieList, setMovieList, setMovie } = useMovieContext();
 
   const getMovies = () => {
-    //get the movies from the api or database
     axios
       .get('/movies')
       .then((response) => {
@@ -63,7 +62,7 @@ const Home = () => {
           <MovieCards
             movie={movie}
             onClick={() => {
-              navigate(`/main/movies/view/${movie.id}`); // Corrected path
+              navigate(`/main/movies/view/${movie.id}/${movie.tmdbId}`); 
               setMovie(movie);
             }}
           />

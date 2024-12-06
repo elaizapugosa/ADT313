@@ -1,3 +1,4 @@
+
 .Main {
   display: flex;
   overflow: hidden;
@@ -8,54 +9,80 @@
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+  background-image: url('/dark bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+
 }
 .Main .container .outlet {
   flex-grow: 3;
-  padding: 1rem;
+  padding: 2rem;
   overflow-y: auto;
 }
+
 .Main .container .navigation {
-  height: 80px;
-  background-color: #15171b;
+  height: 100px;
+  background-color: #2e5266FF;
   width: 100%;
 }
+
 .Main .container .navigation ul {
   list-style: none;
   overflow: hidden;
   padding: 0;
   margin: 0;
+  margin-left: 50px;
   display: flex;
+  align-items: center;
+  font-weight: bold;
 }
 
 .Main .container .navigation ul li {
-  padding: 0px 60px;
+  padding: 0px 20px;
   height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #61dafb;
   font-weight: bold;
-}
-.Main .container .navigation ul li a {
-  text-decoration: none;
-  color: #61dafb;
-}
-.Main .container .navigation ul li.active a,
-.Main .container .navigation ul li:hover a {
-  text-decoration: none;
-  color: white;
-}
-.Main .container .navigation ul li.active,
-.Main .container .navigation ul li:hover {
-  background: #353a43;
-}
-.Main .container .navigation ul li a {
-  text-decoration: none;
+  margin-left: 20px;
+  font-size: 2rem;
 }
 
-.Main .container .navigation ul li.logout,
-.Main .container .navigation ul li.login {
-  cursor: pointer;
-  justify-self: end;
+.Main .container .navigation ul li.movies .movies-btn {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  padding: 10px 15px;
+  background-color: #2e5266FF; 
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.Main .container .navigation ul li.movies .movies-btn:hover {
+  color: #000000;
+  background-color: #bfc5ccFF; 
+}
+
+.Main .container .navigation ul li.logout .logout-btn {
+  text-decoration: none;
+  color: #ff4c4c;
+  font-size: 16px;
+  padding: 8px 12px;
+  background-color: transparent;
+  border: 2px solid #ff4c4c;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-left: 900px;
+}
+
+.Main .container .navigation ul li.logout .logout-btn:hover {
+  color: #ffffff;
+  background-color: #ff4c4c;
 }
